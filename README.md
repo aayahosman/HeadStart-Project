@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# HeadStart-Project
+This Financial Literacy App aims to bridge the gap in financial education for first-generation college students. By providing accessible, user-friendly tools and resources, it helps students navigate the complex world of personal finance, budgeting, and financial aid.
+>>>>>>> ef7dbfadfdbcc650f667da1b7689cdfe1629d607
