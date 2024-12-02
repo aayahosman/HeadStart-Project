@@ -6,6 +6,7 @@ import { Budgeting } from './pages/budgeting/Budgeting'
 import { Educate } from './pages/educate/Educate'
 import { Goals } from './pages/goals/Goals'
 import { Resources } from './pages/resources/Resources'
+import UserList from './frontend/userList';
 
 function AppRouter(props) {
     return (
@@ -16,6 +17,7 @@ function AppRouter(props) {
             <Route path="/educate" element={<Educate />} />
             <Route path="/goals" element={<Goals />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/financial-data" element={<UserList />} />
         </Routes>
     );
 }
