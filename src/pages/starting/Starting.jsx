@@ -26,6 +26,10 @@ export const Starting = () => {
     }
   };
 
+  const handleLoginRedirect = () => {
+    navigate('/login');  // Navigate to the login page
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
@@ -81,6 +85,7 @@ export const Starting = () => {
                     onChange={handleInputChange}
                     className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Enter your name"
+                    aria-label="Name"
                   />
                 </div>
                 <div>
@@ -92,6 +97,7 @@ export const Starting = () => {
                     value={formData.year}
                     onChange={handleInputChange}
                     className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                    aria-label="Year"
                   >
                     <option value="">Select year</option>
                     <option value="freshman">Freshman</option>
@@ -116,6 +122,7 @@ export const Starting = () => {
                     onChange={handleInputChange}
                     className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Enter amount"
+                    aria-label="Monthly income"
                   />
                 </div>
                 <div>
@@ -129,6 +136,7 @@ export const Starting = () => {
                     onChange={handleInputChange}
                     className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Enter amount"
+                    aria-label="Monthly expenses"
                   />
                 </div>
               </div>
@@ -151,6 +159,7 @@ export const Starting = () => {
                             : formData.goals.filter((g) => g !== goal);
                           setFormData({ ...formData, goals: newGoals });
                         }}
+                        aria-label={`Select goal: ${goal}`}
                       />
                       <span>{goal}</span>
                     </label>
@@ -168,7 +177,7 @@ export const Starting = () => {
               </div>
             )}
 
-            <div className="mt-6 flex justify-end">
+            <div className="mt-6 flex justify-between">
               {step > 1 && (
                 <button
                   onClick={() => setStep(step - 1)}
@@ -177,12 +186,20 @@ export const Starting = () => {
                   Back
                 </button>
               )}
-              <button
-                onClick={handleNext}
-                className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-              >
-                {step === 4 ? 'Get Started' : 'Next'}
-              </button>
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={handleNext}
+                  className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                >
+                  {step === 4 ? 'Get Started' : 'Next'}
+                </button>
+                <button
+                  onClick={handleLoginRedirect}
+                  className="px-6 py-2 text-blue-500 border border-blue-500 rounded-md hover:bg-blue-50"
+                >
+                  Login
+                </button>
+              </div>
             </div>
           </div>
         </div>

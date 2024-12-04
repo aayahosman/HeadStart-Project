@@ -12,6 +12,7 @@ import SetGoal from './frontend/SetGoal';
 import Budget from './frontend/Budget'; 
 import { ThemeProvider } from './frontend/ThemeContext';
 import ThemeToggle from './frontend/ThemeToggle';
+import Login from './pages/login/Login';  
 
 function AppRouter(props) {
     return (
@@ -30,6 +31,7 @@ function AppRouter(props) {
                     <Route path="/add-expense" element={<AddExpense />} />
                     <Route path="/set-goal" element={<SetGoal />} />
                     <Route path="/budget" element={<Budget />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
         </ThemeProvider>

@@ -23,8 +23,8 @@ export const Home = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white p-4 md:p-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">Welcome Back!</h1>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">Your financial journey starts here</p>
+        <h1 className="text-3xl font-bold">Welcome Back, Aayah!</h1>
+        <p className="text-gray-600 dark:text-gray-300 mt-2">Mastering Money Management</p>
       </div>
 
       {/* Quick Actions */}

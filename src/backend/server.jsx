@@ -41,3 +41,11 @@ app.post('/test', (req, res) => {
   console.log(req.body); // Log the request body
   res.json({ message: 'Test route hit successfully!' });
 });
+
+const cors = require('cors');
+app.use(cors());  // Enable all origins by default
+
+// If you want to restrict it to specific origins, use:
+app.use(cors({
+  origin: 'http://localhost:3000',  // React app running on port 3000
+}));
