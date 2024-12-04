@@ -1,4 +1,3 @@
-// frontend/src/components/UserList.js
 import React, { useState, useEffect } from 'react';
 import { createFinancialData, getFinancialData } from './API.jsx';
 
@@ -26,13 +25,12 @@ const UserList = () => {
     };
 
     fetchFinancialData();
-  }, []); // Empty array ensures it only runs once when the component mounts
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Send the financial data to the backend
       const newFinancialData = await createFinancialData(userData);
       setFinancialData(newFinancialData);
       alert('Financial data submitted successfully!');
@@ -43,71 +41,71 @@ const UserList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white p-4">
+      <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg shadow-lg p-6">
         <h1 className="text-2xl font-semibold mb-4">Manage Your Financial Data</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
             <input
               type="text"
               name="name"
               value={userData.name}
               onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Enter your name"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
             <input
               type="email"
               name="email"
               value={userData.email}
               onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Enter your email"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Monthly Income</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Monthly Income</label>
             <input
               type="number"
               name="income"
               value={userData.income}
               onChange={(e) => setUserData({ ...userData, income: e.target.value })}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Enter monthly income"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Monthly Expenses</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Monthly Expenses</label>
             <input
               type="number"
               name="expenses"
               value={userData.expenses}
               onChange={(e) => setUserData({ ...userData, expenses: e.target.value })}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               placeholder="Enter monthly expenses"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Financial Goals</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Financial Goals</label>
             <div className="space-y-2">
               {['Build emergency fund', 'Save for textbooks', 'Manage student loans', 'Start investing'].map((goal) => (
                 <label key={goal} className="flex items-center space-x-3">
                   <input
                     type="checkbox"
-                    className="form-checkbox h-5 w-5 text-blue-500"
+                    className="form-checkbox h-5 w-5 text-blue-500 dark:bg-gray-700 dark:border-gray-600"
                     checked={userData.goals.includes(goal)}
                     onChange={(e) => {
                       const newGoals = e.target.checked
@@ -116,7 +114,7 @@ const UserList = () => {
                       setUserData({ ...userData, goals: newGoals });
                     }}
                   />
-                  <span>{goal}</span>
+                  <span className="text-gray-900 dark:text-white">{goal}</span>
                 </label>
               ))}
             </div>

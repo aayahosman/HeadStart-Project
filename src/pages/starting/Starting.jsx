@@ -9,7 +9,7 @@ export const Starting = () => {
     year: '',
     income: '',
     expenses: '',
-    goals: []
+    goals: [],
   });
 
   const handleInputChange = (e) => {
@@ -20,50 +20,58 @@ export const Starting = () => {
     if (step < 4) {
       setStep(step + 1);
     } else {
-      navigate('/');
+      // After final step, navigate to Home page
+      // Ideally, you could save formData to a global state or API call here
+      navigate('/home');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Welcome to FinLit</h1>
-          <p className="text-gray-600 mt-2">Let's get started on your financial journey</p>
+          <h1 className="text-3xl font-bold">Welcome to FinLit</h1>
+          <p className="text-gray-600 dark:text-gray-300 mt-2">
+            Let's get started on your financial journey
+          </p>
         </div>
 
         {/* Progress Steps */}
         <div className="flex justify-between mb-8">
           {[1, 2, 3, 4].map((num) => (
             <div key={num} className="flex items-center">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                step >= num ? 'bg-blue-500 text-white' : 'bg-gray-200'
-              }`}>
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  step >= num ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 dark:text-gray-400'
+                }`}
+              >
                 {num}
               </div>
               {num < 4 && (
-                <div className={`h-1 w-16 ${
-                  step > num ? 'bg-blue-500' : 'bg-gray-200'
-                }`} />
+                <div
+                  className={`h-1 w-16 ${
+                    step > num ? 'bg-blue-500' : 'bg-gray-200 dark:bg-gray-700'
+                  }`}
+                />
               )}
             </div>
           ))}
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg">
-          <div className="border-b p-6">
-            <h2 className="text-xl font-semibold text-gray-900">
-              {step === 1 && "Basic Information"}
-              {step === 2 && "Financial Situation"}
-              {step === 3 && "Goals Setting"}
-              {step === 4 && "Final Steps"}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+          <div className="border-b border-gray-200 dark:border-gray-700 p-6">
+            <h2 className="text-xl font-semibold">
+              {step === 1 && 'Basic Information'}
+              {step === 2 && 'Financial Situation'}
+              {step === 3 && 'Goals Setting'}
+              {step === 4 && 'Final Steps'}
             </h2>
           </div>
           <div className="p-6">
             {step === 1 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     What's your name?
                   </label>
                   <input
@@ -71,19 +79,19 @@ export const Starting = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Enter your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     What year are you in?
                   </label>
                   <select
                     name="year"
                     value={formData.year}
                     onChange={handleInputChange}
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                   >
                     <option value="">Select year</option>
                     <option value="freshman">Freshman</option>
@@ -98,7 +106,7 @@ export const Starting = () => {
             {step === 2 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     What's your monthly income?
                   </label>
                   <input
@@ -106,12 +114,12 @@ export const Starting = () => {
                     name="income"
                     value={formData.income}
                     onChange={handleInputChange}
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Enter amount"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Estimated monthly expenses?
                   </label>
                   <input
@@ -119,7 +127,7 @@ export const Starting = () => {
                     name="expenses"
                     value={formData.expenses}
                     onChange={handleInputChange}
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Enter amount"
                   />
                 </div>
@@ -128,29 +136,33 @@ export const Starting = () => {
 
             {step === 3 && (
               <div className="space-y-4">
-                <p className="text-gray-600 mb-4">Select your financial goals:</p>
-                {['Build emergency fund', 'Save for textbooks', 'Manage student loans', 'Start investing'].map((goal) => (
-                  <label key={goal} className="flex items-center space-x-3">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-5 w-5 text-blue-500"
-                      onChange={(e) => {
-                        const newGoals = e.target.checked
-                          ? [...formData.goals, goal]
-                          : formData.goals.filter(g => g !== goal);
-                        setFormData({ ...formData, goals: newGoals });
-                      }}
-                    />
-                    <span>{goal}</span>
-                  </label>
-                ))}
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Select your financial goals:
+                </p>
+                {['Build emergency fund', 'Save for textbooks', 'Manage student loans', 'Start investing'].map(
+                  (goal) => (
+                    <label key={goal} className="flex items-center space-x-3">
+                      <input
+                        type="checkbox"
+                        className="form-checkbox h-5 w-5 text-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                        onChange={(e) => {
+                          const newGoals = e.target.checked
+                            ? [...formData.goals, goal]
+                            : formData.goals.filter((g) => g !== goal);
+                          setFormData({ ...formData, goals: newGoals });
+                        }}
+                      />
+                      <span>{goal}</span>
+                    </label>
+                  )
+                )}
               </div>
             )}
 
             {step === 4 && (
               <div className="space-y-4">
                 <h3 className="font-medium text-lg">Great! You're almost done!</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   We'll use this information to customize your experience and help you reach your financial goals.
                 </p>
               </div>
@@ -160,7 +172,7 @@ export const Starting = () => {
               {step > 1 && (
                 <button
                   onClick={() => setStep(step - 1)}
-                  className="mr-4 px-4 py-2 text-gray-600 hover:text-gray-800"
+                  className="mr-4 px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
                 >
                   Back
                 </button>

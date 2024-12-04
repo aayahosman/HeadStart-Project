@@ -1,35 +1,43 @@
 // backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
-const authRoutes = require('./routes/auth');
-const financialDataRoutes = require('./routes/financialData');
+const authRoutes = require('./routes/auth.jsx');
+const financialDataRoutes = require('./routes/financialData.jsx');
 
-dotenv.config(); // Load environment variables
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+app.use(express.json()); // to parse JSON bodies
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-
-// MongoDB connection
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log('Connected to MongoDB');
-}).catch((err) => {
-  console.error('Error connecting to MongoDB', err);
-});
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.log('MongoDB connection error:', err));
 
 // Routes
-app.use('/api/auth', authRoutes); // Authentication Routes
-app.use('/api/financial-data', financialDataRoutes); // Financial Data Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/financial-data', financialDataRoutes);
 
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+process.on('SIGINT', () => {
+  console.log('Server is shutting down...');
+  app.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
+});
+console.log('Mongo URI:', process.env.MONGO_URI);  
+
+app.post('/test', (req, res) => {
+  console.log(req.body); // Log the request body
+  res.json({ message: 'Test route hit successfully!' });
 });

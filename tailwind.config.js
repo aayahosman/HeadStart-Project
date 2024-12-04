@@ -56,9 +56,30 @@ module.exports = {
       animation: {
         pulse: 'pulse 2s infinite',
         network: 'network 10s linear infinite',
+        darkMode: 'class', // Enable dark mode support via class
+        content: ['./src/**/*.{js,jsx,ts,tsx}'],
+        theme: {
+        extend: {},
+        },
+
+        darkMode: 'class', // Enable dark mode via class
+  content: ['./src/**/*.{js,jsx,ts,tsx}'], // Ensure correct file paths
+  theme: {
+    extend: {},
+  },
+  plugins: [],
     },
   },
 },
+  plugins: [],
+};
+
+module.exports = {
+  darkMode: 'class', // Enable class-based dark mode
+  content: ['./src/**/*.{js,jsx,ts,tsx}'], // Adjust paths if needed
+  theme: {
+    extend: {},
+  },
   plugins: [],
 };
 

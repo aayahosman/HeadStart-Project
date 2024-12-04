@@ -23,7 +23,7 @@ export const Budgeting = () => {
     if (newExpense.category && newExpense.amount) {
       setExpenses([...expenses, { 
         ...newExpense, 
-        color: `#${Math.floor(Math.random()*16777215).toString(16)}` 
+        color: `#${Math.floor(Math.random() * 16777215).toString(16)}` 
       }]);
       setNewExpense({ category: '', amount: '' });
     }
@@ -36,16 +36,16 @@ export const Budgeting = () => {
   const totalExpenses = expenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white p-4 md:p-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Budget Tracker</h1>
-        <p className="text-gray-600 mt-2">Manage your monthly expenses</p>
+        <h1 className="text-3xl font-bold">Budget Tracker</h1>
+        <p className="text-gray-600 dark:text-gray-300 mt-2">Manage your monthly expenses</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {/* Expense Input */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <h2 className="text-lg font-semibold">Add New Expense</h2>
           </div>
           <div className="p-6">
@@ -53,14 +53,14 @@ export const Budgeting = () => {
               <input
                 type="text"
                 placeholder="Category"
-                className="flex-1 p-2 border rounded-md"
+                className="flex-1 p-2 border rounded-md dark:bg-gray-700 dark:text-white"
                 value={newExpense.category}
                 onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}
               />
               <input
                 type="number"
                 placeholder="Amount"
-                className="flex-1 p-2 border rounded-md"
+                className="flex-1 p-2 border rounded-md dark:bg-gray-700 dark:text-white"
                 value={newExpense.amount}
                 onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
               />
@@ -74,7 +74,10 @@ export const Budgeting = () => {
 
             <div className="space-y-3">
               {expenses.map((expense, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
+                >
                   <div className="flex items-center">
                     <div className="w-3 h-3 rounded-full mr-3" style={{ backgroundColor: expense.color }} />
                     <span>{expense.category}</span>
@@ -95,8 +98,8 @@ export const Budgeting = () => {
         </div>
 
         {/* Pie Chart */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-6 border-b border-gray-200">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <h2 className="text-lg font-semibold">Expense Breakdown</h2>
           </div>
           <div className="p-6">
@@ -127,8 +130,8 @@ export const Budgeting = () => {
       </div>
 
       {/* Spending Trends */}
-      <div className="bg-white rounded-lg shadow mb-8">
-        <div className="p-6 border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow mb-8">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-lg font-semibold">Spending Trends</h2>
         </div>
         <div className="p-6">
@@ -146,21 +149,21 @@ export const Budgeting = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="p-6">
-            <h3 className="text-lg font-medium text-gray-600">Total Expenses</h3>
+            <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300">Total Expenses</h3>
             <p className="text-3xl font-bold mt-2">${totalExpenses}</p>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="p-6">
-            <h3 className="text-lg font-medium text-gray-600">Monthly Budget</h3>
+            <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300">Monthly Budget</h3>
             <p className="text-3xl font-bold mt-2">$2,000</p>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="p-6">
-            <h3 className="text-lg font-medium text-gray-600">Remaining</h3>
+            <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300">Remaining</h3>
             <p className="text-3xl font-bold mt-2 text-green-500">${2000 - totalExpenses}</p>
           </div>
         </div>

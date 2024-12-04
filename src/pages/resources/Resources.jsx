@@ -43,29 +43,29 @@ export const Resources = () => {
     }
   ];
 
-  const filteredResources = resources.map(category => ({
+  const filteredResources = resources.map((category) => ({
     ...category,
-    items: category.items.filter(item =>
+    items: category.items.filter((item) =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
-  })).filter(category => category.items.length > 0);
+  })).filter((category) => category.items.length > 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white p-4 md:p-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Financial Resources</h1>
-        <p className="text-gray-600 mt-2">Access tools and information to support your financial journey</p>
+        <h1 className="text-3xl font-bold">Financial Resources</h1>
+        <p className="text-gray-600 dark:text-gray-300 mt-2">Access tools and information to support your financial journey</p>
       </div>
 
       {/* Search Bar */}
       <div className="relative mb-8">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
         <input
           type="text"
           placeholder="Search resources..."
-          className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -74,11 +74,11 @@ export const Resources = () => {
       {/* Resources Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredResources.map((category) => (
-          <div key={category.category} className="bg-white rounded-lg shadow-sm p-6">
+          <div key={category.category} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
             <div className="mb-4">
               <div className="flex items-center gap-2">
                 <category.icon className="h-5 w-5 text-blue-500" />
-                <h2 className="text-xl font-semibold text-gray-900">{category.category}</h2>
+                <h2 className="text-xl font-semibold">{category.category}</h2>
               </div>
             </div>
             <div className="space-y-4">
@@ -86,14 +86,14 @@ export const Resources = () => {
                 <a
                   key={item.title}
                   href={item.link}
-                  className="block p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                  className="block p-4 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-medium text-gray-900">{item.title}</h3>
-                      <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                      <h3 className="font-medium">{item.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{item.description}</p>
                     </div>
-                    <ExternalLink className="h-5 w-5 text-gray-400" />
+                    <ExternalLink className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                   </div>
                 </a>
               ))}

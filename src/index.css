@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Light Mode Styles */
+/* Light Mode Styles */
+html, body {
+  background-color: #f9fafb; /* Light background */
+  color: #111827; /* Light text */
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+.dark html, .dark body {
+  background-color: #1f2937; /* Dark background */
+  color: #f3f4f6; /* Light text */
+}
+
+
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
