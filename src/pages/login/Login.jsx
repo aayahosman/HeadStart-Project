@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../axios';  
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [theme, setTheme] = useState('light'); // Default to light mode
@@ -32,8 +34,10 @@ const Login = () => {
       // Save token to localStorage
       localStorage.setItem('token', response.data.token);
 
-      // Handle successful login
+      // Handle successful login and redirect to the Home page
       console.log('Logged in successfully!');
+      navigate('/home'); // Redirect to Home page
+
     } catch (error) {
       console.error('Login failed', error);
     }
